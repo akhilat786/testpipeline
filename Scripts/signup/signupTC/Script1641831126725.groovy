@@ -17,3 +17,12 @@ import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
 import internal.GlobalVariable as GlobalVariable
 import org.openqa.selenium.Keys as Keys
 
+WebUI.openBrowser("https://www.amazon.com")
+WebUI.maximizeWindow()
+WebUI.mouseOver(findTestObject('Object Repository/signup/hello-signup'))
+WebUI.click(findTestObject('Object Repository/signup/starthere'))
+WebUI.sendKeys(findTestObject('Object Repository/signup/username'), 'midhi')
+WebUI.sendKeys(findTestObject('Object Repository/signup/Email'), 'midhi123@gmail.com')
+WebUI.sendKeys(findTestObject('Object Repository/signup/password'), 'midhi123')
+WebUI.sendKeys(findTestObject('Object Repository/signup/confirmpassword'), 'midhi123')
+WebUI.click(findTestObject('Object Repository/signup/continue'))
