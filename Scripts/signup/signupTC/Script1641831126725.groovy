@@ -12,17 +12,23 @@ import com.kms.katalon.core.testdata.TestData as TestData
 import com.kms.katalon.core.testng.keyword.TestNGBuiltinKeywords as TestNGKW
 import com.kms.katalon.core.testobject.TestObject as TestObject
 import com.kms.katalon.core.webservice.keyword.WSBuiltInKeywords as WS
+import com.kms.katalon.core.webui.driver.DriverFactory
 import com.kms.katalon.core.webui.keyword.WebUiBuiltInKeywords as WebUI
 import com.kms.katalon.core.windows.keyword.WindowsBuiltinKeywords as Windows
-import internal.GlobalVariable as GlobalVariable
+import org.openqa.selenium.WebDriver as WebDriver
+import internal.GlobalVariable
+
+import org.openqa.selenium.By
 import org.openqa.selenium.Keys as Keys
 
 WebUI.openBrowser("https://www.amazon.com")
 WebUI.maximizeWindow()
 WebUI.mouseOver(findTestObject('Object Repository/signup/hello-signup'))
 WebUI.click(findTestObject('Object Repository/signup/starthere'))
-WebUI.sendKeys(findTestObject('Object Repository/signup/username'), 'midhi')
-WebUI.sendKeys(findTestObject('Object Repository/signup/Email'), 'midhi123@gmail.com')
-WebUI.sendKeys(findTestObject('Object Repository/signup/password'), 'midhi123')
-WebUI.sendKeys(findTestObject('Object Repository/signup/confirmpassword'), 'midhi123')
-WebUI.click(findTestObject('Object Repository/signup/continue'))
+WebUI.sendKeys(findTestObject('Object Repository/signup/username'), findTestData('Data Files/signupdata/Signupdata').getValue(1, 1))
+WebUI.sendKeys(findTestObject('Object Repository/signup/Email'), findTestData('Data Files/signupdata/Signupdata').getValue(2, 1))
+WebUI.sendKeys(findTestObject('Object Repository/signup/password'), findTestData('Data Files/signupdata/Signupdata').getValue(3, 1))
+WebUI.sendKeys(findTestObject('Object Repository/signup/confirmpassword'), findTestData('Data Files/signupdata/Signupdata').getValue(4, 1))
+//WebDriver driver = DriverFactory.getWebDriver()
+WebDriver driver= CustomKeywords.'aksample.driver.getDriver'()
+driver.findElement(By.id('ap_password_check')).click();
